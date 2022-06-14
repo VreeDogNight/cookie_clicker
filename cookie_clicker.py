@@ -32,6 +32,8 @@ for i in range(500):
     if driver.find_elements(By.CSS_SELECTOR, 'div[class="crate upgrade enabled"]'):
         driver.find_element(By.CSS_SELECTOR, 'div[class="crate upgrade enabled"]').click()
         continue
+    if driver.find_elements(By.XPATH, '/html/body/div/div[2]/div[9]/div[*]/div[1]'):
+        driver.find_element(By.XPATH, '/html/body/div/div[2]/div[9]/div[*]/div[1]').click()
     for item in items:
         if item.get_attribute('class') != 'product locked disabled toggledOff':
             value = int(item.text.split('\n')[1].replace(',', ''))
