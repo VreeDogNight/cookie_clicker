@@ -28,7 +28,10 @@ items = [driver.find_element(By.CSS_SELECTOR, f'#product{i}') for i in range(18,
 
 for i in range(500):
     cookie.click()
-    count = int(cookie_count.text.split(' ')[0])
+    count = int(cookie_count.text.split(' ')[0].replace(',', ''))
+    if driver.find_elements(By.CSS_SELECTOR, 'div[class="crate upgrade enabled"]'):
+        driver.find_element(By.CSS_SELECTOR, 'div[class="crate upgrade enabled"]').click()
+        continue
     for item in items:
         if item.get_attribute('class') != 'product locked disabled toggledOff':
             value = int(item.text.split('\n')[1].replace(',', ''))
